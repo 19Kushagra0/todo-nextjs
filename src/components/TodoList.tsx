@@ -1,9 +1,9 @@
 'use client'
 
 import styles from '@/styles/todo.module.css'
-import type { todosType } from '@/types/types'
+import type { todoListType } from '@/types/types'
 
-export default function TodoList({ todos }: todosType) {
+export default function TodoList({ todos, deleteTodo, toggleModal, setEditIndex }: todoListType) {
 
 
     return (
@@ -18,8 +18,11 @@ export default function TodoList({ todos }: todosType) {
                             <span className={styles.todoText}>{todo}</span>
                         </div>
                         <div className={styles.actions}>
-                            <button className={styles.editButton}>Edit</button>
-                            <button className={styles.deleteButton}>Delete</button>
+                            <button onClick={() => {
+                                setEditIndex(index)
+                                toggleModal()
+                            }} className={styles.editButton}>Edit</button>
+                            <button onClick={() => { deleteTodo(index) }} className={styles.deleteButton}>Delete</button>
                         </div>
                     </li>
                 )
