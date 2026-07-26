@@ -2,11 +2,18 @@
 
 import TodoInputGroup from '@/components/TodoInputGroup'
 import TodoList from '@/components/TodoList'
+import { useState } from 'react'
 
 
 export default function TodoApp() {
+    const [todos, setTodos] = useState<string[]>([])
+
     const addTodo = (input: string) => {
         console.log(input);
+
+        const copyData = [...todos]
+        copyData.push(input)
+        setTodos(copyData)
     }
 
 
@@ -14,7 +21,7 @@ export default function TodoApp() {
         <>
 
             <TodoInputGroup addTodo={addTodo} />
-            <TodoList />
+            <TodoList todos={todos} />
 
         </>
     )
