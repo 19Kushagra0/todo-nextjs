@@ -2,10 +2,7 @@
 
 import styles from '@/styles/todo.module.css'
 import { useState } from 'react'
-
-interface TodoInputGroup {
-    addTodo: (input: string) => void;
-}
+import type { TodoInputGroup } from '@/types/types'
 
 export default function TodoInputGroup({ addTodo }: TodoInputGroup) {
     const [input, setInput] = useState('')
